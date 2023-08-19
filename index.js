@@ -3,6 +3,7 @@ const src = [
   'utm_campaign',
   'utm_content',
   'utm_medium',
+  'utm_mediun',
   'utm_source',
   'utm_term',
   // Adobe Analytics
