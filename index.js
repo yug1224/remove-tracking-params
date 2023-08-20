@@ -1,11 +1,6 @@
 const src = [
   // Google Analytics
-  'utm_campaign',
-  'utm_content',
-  'utm_medium',
-  'utm_mediun',
-  'utm_source',
-  'utm_term',
+  'utm_',
   // Adobe Analytics
   'sc_cid',
   'WT.mc_id',
@@ -16,7 +11,12 @@ const src = [
   'redirected',
 ];
 const url = new URL(location.href);
-src.forEach((v) => {
+const targetList = [];
+for (const [key] of url.searchParams.entries()) {
+  if (src.some((v) => new RegExp(v).test(key))) targetList.push(key);
+}
+targetList.forEach((v) => {
   url.searchParams.delete(v);
 });
+
 history.replaceState(null, '', url.href);
